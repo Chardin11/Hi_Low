@@ -11,6 +11,8 @@ public class CardCheck{
 
     // Method that runs to check card
     public void checkCard(String pName, String guessSuit, String guessRank){
+        Boolean dAnswer; // Connor here might need to make a variable 
+                        //that sets to true or false so i can call it in the bets function. Problem is the function is void not sure if we can change that or not
         // the players name
         String playerName = pName;
         // the players guesses

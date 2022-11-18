@@ -6,10 +6,15 @@ import java.util.Scanner;
 public class bets extends CardCheck{
 
     public void thebets() {
+        String pName;
+        String guessSuit;
+        String guessRank;
         CardCheck check = new CardCheck();
+        check.checkCard(pName, guessSuit, guessRank);
+        Boolean answer = check.CardCheck(dAnswer);
         // check.checkCard(pName, guessSuit, guessRank);
         // Boolean answer = check.dRankNum;
-        Boolean answer = true;
+        
         int playerCurrency = 1000;
         int bet = bet();
         int newPlayerCurrency = initalPlayerBetWon(playerCurrency, bet);
