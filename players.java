@@ -31,7 +31,7 @@ public class Players
                 DeckOfCards.getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
-                System.out.println(playerNames[i] + " enter in your guess for the rank");
+                System.out.println(playerNames[i] + " enter in you guess for the rank");
                 String playerRankGuess = Rinput.nextLine();
                 Scanner Sinput = new Scanner(System.in);
                 System.out.println( playerNames[i] + " enter in your guess for the suit");
