@@ -32,7 +32,7 @@ public class Controller{
             // File file = new File("CardCheck.java");//crates new file to access the cardcheck
             // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
             // {
-                DeckOfCards.getdeck();
+                getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
                 System.out.println(playerNames[i] + " enter in your guess for the rank");
@@ -42,7 +42,7 @@ public class Controller{
                 String playerSuitGuess = Sinput.nextLine();
 
 
-                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
                 
                 Rinput.close();
                 Sinput.close();
@@ -223,7 +223,7 @@ public class Controller{
         }
 
         // tests if the players guess was correct for the rank and suit
-        if(guessSuit == "higher" || guessSuit == "Higher" || guessSuit == "HIGHER" || guessSuit == "h" || guessSuit == "H"){
+        if(guessSuit.equals("higher") || guessSuit.equals("Higher") || guessSuit.equals("HIGHER") || guessSuit.equals("h") || guessSuit.equals("H")){
             if (dSuitNum > hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
                 dAnswer = true;
@@ -234,7 +234,7 @@ public class Controller{
             }
 
         }
-        else if (guessRank == "lower" || guessRank == "Lower" || guessRank == "LOWER" || guessRank == "l" || guessRank == "L") {
+        else if (guessSuit.equals("lower") || guessSuit.equals("lower") || guessSuit.equals("LOWER") || guessSuit.equals("l") || guessSuit.equals("L")) {
             if (dSuitNum < hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
                 dAnswer = true;
@@ -247,9 +247,10 @@ public class Controller{
         }
         else{
             System.out.println("Invalid Input");
+            checkCard(hRank, hRank, hRank);
         }
 
-        if (guessSuit == "higher" || guessSuit == "Higher" || guessSuit == "HIGHER" || guessSuit == "h" || guessSuit == "H"){
+        if (guessRank.equals("higher") || guessRank.equals("Higher") || guessRank.equals("HIGHER") || guessRank.equals("h") || guessRank.equals("H")){
             if (dRankNum > hRankNum){
                 System.out.println("Congratulations " + playerName + " you guessed the rank correct!");
                 dAnswer = true;
@@ -259,7 +260,7 @@ public class Controller{
                 dAnswer = false;
             }
         }
-        else if (guessRank == "lower" || guessRank == "Lower" || guessRank == "LOWER" || guessRank == "l" || guessRank == "L") {
+        else if (guessRank.equals("lower") || guessRank.equals("lower") || guessRank.equals("LOWER") || guessRank.equals("l") || guessRank.equals("L")) {
             if (dSuitNum < hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
                 dAnswer = true;
@@ -271,6 +272,7 @@ public class Controller{
         }
         else{
             System.out.println("Invalid Input");
+            checkCard(hRank, hRank, hRank);
         }
         return dAnswer;
     }

@@ -28,17 +28,17 @@ public class Players
             // File file = new File("CardCheck.java");//crates new file to access the cardcheck
             // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
             // {
-                DeckOfCards.getdeck();
+                // .getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
                 System.out.println(playerNames[i] + " enter in you guess for the rank");
-                String playerRankGuess = Rinput.nextLine();
+                // String playerRankGuess = Rinput.nextLine();
                 Scanner Sinput = new Scanner(System.in);
                 System.out.println( playerNames[i] + " enter in your guess for the suit");
-                String playerSuitGuess = Sinput.nextLine();
+                // String playerSuitGuess = Sinput.nextLine();
 
 
-                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                // CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
                 
                 Rinput.close();
                 Sinput.close();
