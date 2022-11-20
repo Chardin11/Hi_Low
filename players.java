@@ -1,4 +1,5 @@
 package Hi_Low;
+import java.util.Currency;
 // import java.io.File;
 import java.util.Scanner;
 
@@ -28,17 +29,27 @@ public class Players
             // File file = new File("CardCheck.java");//crates new file to access the cardcheck
             // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
             // {
-                // .getdeck();
+                DeckOfCards.getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
-                System.out.println(playerNames[i] + " enter in you guess for the rank");
-                // String playerRankGuess = Rinput.nextLine();
+                System.out.println(playerNames[i] + " enter in your guess for the rank");
+                String playerRankGuess = Rinput.nextLine();
+
                 Scanner Sinput = new Scanner(System.in);
                 System.out.println( playerNames[i] + " enter in your guess for the suit");
-                // String playerSuitGuess = Sinput.nextLine();
+                String playerSuitGuess = Sinput.nextLine();
+
+                Scanner bInput = new Scanner(System.in);
+                System.out.println(playerNames[i] + " enter in your betting amount");
+                int playerBets = bInput.nextInt();
+
+                Scanner currencyInout = new Scanner(System.in);
+                System.out.println(playerNames[i] + " enter in your currency amount");
+                int currencyAmount = currencyInout.nextInt();
 
 
-                // CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                Bets.playerBets(currencyAmount, playerBets, true);
                 
                 Rinput.close();
                 Sinput.close();
@@ -50,6 +61,10 @@ public class Players
         }
         input.close();
         nameinput.close();
+        Rinput.close();
+        Sinput.close();
+        Binput.close();
+        currencyInout.close();
         
     }
 
