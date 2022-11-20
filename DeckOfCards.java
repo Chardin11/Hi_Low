@@ -5,11 +5,11 @@ package Hi_Low;
 // 
 
 
-public class DeckOfCards extends players{
+public class DeckOfCards{
     // public void main(String[] args) {
     //     getdeck();
     // }
-    public static void getDeck(){
+    public static void getdeck(){
         int[] deck = new int[52];
 
         String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
@@ -26,14 +26,14 @@ public class DeckOfCards extends players{
             deck[index] = temp;
         }
 
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 1; i++) {
             String suit = suits[deck[i] / 13];
             String rank = ranks[deck[i] % 13];
 
 
             System.out.println(rank + " of " + suit);
-        }
+        // }
 
     } //end of main
     
-}
+}}

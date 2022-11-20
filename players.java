@@ -1,10 +1,10 @@
 package Hi_Low;
-import java.io.File;
+// import java.io.File;
 import java.util.Scanner;
 
 //import javax.sound.sampled.SourceDataLine;
 
-public class players extends bets
+public class Players
 {
     public static void player() 
     {
@@ -12,11 +12,14 @@ public class players extends bets
         System.out.println("Enter the numer of particapants playing: ");//prompt user amount and player names
         
         int playerCount = input.nextInt();
-        
-        System.out.println("enter in the player names");
-        String playerIds = input.nextLine();
-        String[] playerNames = {playerIds};
-        
+
+        String[] playerNames = {"Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9", "Player10", "Player11", "Player12", "Player13", "Player14", "Player15"};
+        Scanner nameinput = new Scanner(System.in);
+        for (int i = 0; i < playerCount; i++) {
+            System.out.println("Enter in the player names:");
+            String playerIds = nameinput.nextLine();
+            playerNames[i] = playerIds;
+        }
 
         int[] playerArry = new int[playerCount];//make an array that holds player amount
         for(int i = 0; i < playerArry.length; i++)//for loop that leys each player make guesses
@@ -25,15 +28,20 @@ public class players extends bets
             // File file = new File("CardCheck.java");//crates new file to access the cardcheck
             // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
             // {
-                System.out.println("player " + playerNames[i] + " enter in you guess for the rank");
-                String playerRankGuess = input.nextLine();
-                System.out.println("player " + playerNames[i] + " enter in your guess for the suit");
-                String playerSuitGuess = input.nextLine();
+                DeckOfCards.getdeck();
 
-                var playerClass = new CardCheck();
-                playerClass.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                Scanner Rinput = new Scanner(System.in);
+                System.out.println(playerNames[i] + " enter in your guess for the rank");
+                String playerRankGuess = Rinput.nextLine();
+                Scanner Sinput = new Scanner(System.in);
+                System.out.println( playerNames[i] + " enter in your guess for the suit");
+                String playerSuitGuess = Sinput.nextLine();
+
+
+                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
                 
-                
+                Rinput.close();
+                Sinput.close();
             // }
             // else
             //     System.out.println("file does not exist");
@@ -41,7 +49,8 @@ public class players extends bets
            
         }
         input.close();
-
+        nameinput.close();
+        
     }
 
 }

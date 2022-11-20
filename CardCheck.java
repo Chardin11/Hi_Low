@@ -1,17 +1,17 @@
 package Hi_Low;
 
 public class CardCheck{
-    // public void main(String[] args) {
+    // public static void main(String[] args) {
     //     String playerName = "joe";
-    //     String guessSuit = "lower";
-    //     String guessRank = "lower";
+    //     String guessSuit = "h";
+    //     String guessRank = "h";
         
     //     checkCard(playerName, guessSuit, guessRank);
     // }
 
     // Method that runs to check card
-    public void checkCard(String pName, String guessSuit, String guessRank){
-        Boolean dAnswer; // Connor here might need to make a variable 
+    public static boolean checkCard(String pName, String guessSuit, String guessRank){
+        Boolean dAnswer = false; // Connor here might need to make a variable 
                         //that sets to true or false so i can call it in the bets function. Problem is the function is void not sure if we can change that or not
         // the players name
         String playerName = pName;
@@ -83,22 +83,22 @@ public class CardCheck{
         if(guessSuit == "higher" || guessSuit == "Higher" || guessSuit == "HIGHER" || guessSuit == "h" || guessSuit == "H"){
             if (dSuitNum > hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
-                // return true;
+                dAnswer = true;
             }
             else {
                 System.out.println( playerName + " guessed wrong for the suit.");
-                // return false;
+                dAnswer = false;
             }
 
         }
         else if (guessRank == "lower" || guessRank == "Lower" || guessRank == "LOWER" || guessRank == "l" || guessRank == "L") {
             if (dSuitNum < hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
-                // return true;
+                dAnswer = true;
             }
             else {
                 System.out.println( playerName + " guessed wrong for the suit.");
-                // return false;
+                dAnswer = false;
             }
 
         }
@@ -109,26 +109,26 @@ public class CardCheck{
         if (guessSuit == "higher" || guessSuit == "Higher" || guessSuit == "HIGHER" || guessSuit == "h" || guessSuit == "H"){
             if (dRankNum > hRankNum){
                 System.out.println("Congratulations " + playerName + " you guessed the rank correct!");
-                // return true;
+                dAnswer = true;
             }
             else {
                 System.out.println( playerName + " guessed wrong for the rank.");
-                // return false;
+                dAnswer = false;
             }
         }
         else if (guessRank == "lower" || guessRank == "Lower" || guessRank == "LOWER" || guessRank == "l" || guessRank == "L") {
             if (dSuitNum < hSuitNum){
                 System.out.println("Congratulations " + playerName + " you guessed the suit correct!");
-                // return true;
+                dAnswer = true;
             }
             else {
                 System.out.println( playerName + " guessed wrong for the suit.");
-                // return false;
+                dAnswer = false;
             }
         }
         else{
             System.out.println("Invalid Input");
         }
-
+        return dAnswer;
     }
 }

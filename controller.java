@@ -1,9 +1,12 @@
 package Hi_Low;
 
-public class controller extends DeckOfCards{
+public class Controller{
 
     public static void main(String[] args) {
-        getDeck();
-        player();
+        // DeckOfCards.getdeck();
+        Players.player();
+        // Bets.thebets();
+
     } // end of main
+
 } // end of class
