@@ -64,8 +64,7 @@ public class Players
         Rinput.close();
         Sinput.close();
         Binput.close();
-        currencyInout.close();
-        
+        currencyInout.close();        
     }
 
 }
