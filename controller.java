@@ -32,20 +32,30 @@ public class controller{
             // File file = new File("CardCheck.java");//crates new file to access the cardcheck
             // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
             // {
-                getdeck();
+                DeckOfCards.getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
                 System.out.println(playerNames[i] + " enter in your guess for the rank");
                 String playerRankGuess = Rinput.nextLine();
+
                 Scanner Sinput = new Scanner(System.in);
                 System.out.println( playerNames[i] + " enter in your guess for the suit");
                 String playerSuitGuess = Sinput.nextLine();
 
+                Scanner bInput = new Scanner(System.in);
+                System.out.println(playerNames[i] + " enter in your betting amount");
+                int playerBets = bInput.nextInt();
 
-                checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                Scanner currencyInout = new Scanner(System.in);
+                System.out.println(playerNames[i] + " enter in your currency amount");
+                int currencyAmount = currencyInout.nextInt();
+
+
+                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                Bets.playerBets(currencyAmount, playerBets, true);
                 
-                // Rinput.close(); Connor here having these two closed broke my compiler when i had more than one player
-                // Sinput.close();
+                Rinput.close();
+                Sinput.close();
             // }
             // else
             //     System.out.println("file does not exist");
@@ -54,7 +64,10 @@ public class controller{
         }
         input.close();
         nameinput.close();
-        
+        Rinput.close();
+        Sinput.close();
+        Binput.close();
+        currencyInout.close();        
     }
 
     public static void thebets() {
