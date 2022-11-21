@@ -3,7 +3,7 @@ package Hi_Low;
 import java.util.Scanner;
 
 
-public class Bets{
+public class bets{
 
     public static void thebets() {
         // String pName;

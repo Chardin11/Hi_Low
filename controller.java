@@ -2,7 +2,7 @@ package Hi_Low;
 
 import java.util.Scanner;
 
-public class Controller{
+public class controller{
 
     public static void main(String[] args) {
         getdeck();
@@ -44,8 +44,8 @@ public class Controller{
 
                 checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
                 
-                Rinput.close();
-                Sinput.close();
+                // Rinput.close(); Connor here having these two closed broke my compiler when i had more than one player
+                // Sinput.close();
             // }
             // else
             //     System.out.println("file does not exist");
@@ -114,8 +114,8 @@ public class Controller{
 
 
     // this function checks dRankNum on CardCheck.java to see if true if so add bet else subtract
-    public static int playerBets(int newPlayerCurrency, int bet, boolean answer){
-            if(answer == true){
+    public static int playerBets(int newPlayerCurrency, int bet, boolean danswer){
+            if(danswer == true){
             newPlayerCurrency += bet;
             return newPlayerCurrency;
             } else {
