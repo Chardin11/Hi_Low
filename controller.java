@@ -12,8 +12,10 @@ public class controller{
 
     public static void player() 
     {
+
+
         Scanner input = new Scanner(System.in);
-        System.out.println("Enter the numer of particapants playing: ");//prompt user amount and player names
+        System.out.println("Enter the number of particapants playing: ");//prompt user amount and player names
         
         int playerCount = input.nextInt();
 
@@ -29,10 +31,8 @@ public class controller{
         for(int i = 0; i < playerArry.length; i++)//for loop that leys each player make guesses
         {
               
-            // File file = new File("CardCheck.java");//crates new file to access the cardcheck
-            // if(file.exists())//is statement for if the file exists; will prompt for users to make guesses
-            // {
-                DeckOfCards.getdeck();
+                
+                getdeck();
 
                 Scanner Rinput = new Scanner(System.in);
                 System.out.println(playerNames[i] + " enter in your guess for the rank");
@@ -50,51 +50,24 @@ public class controller{
                 System.out.println(playerNames[i] + " enter in your currency amount");
                 int currencyAmount = currencyInout.nextInt();
 
+                Boolean dAnswer = checkCard(playerSuitGuess, playerRankGuess, playerSuitGuess);
+                checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
 
-                CardCheck.checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
-                Bets.playerBets(currencyAmount, playerBets, true);
+                playerBets(currencyAmount, playerBets, true);
+                
+                currencyAmount = playerBets(currencyAmount, playerBets, dAnswer);
+                System.out.println(playerNames[i] + " your new betting amount: " + currencyAmount);
                 
                 Rinput.close();
                 Sinput.close();
-            // }
-            // else
-            //     System.out.println("file does not exist");
-                           
-           
+                bInput.close();
+                currencyInout.close();        
+
         }
         input.close();
         nameinput.close();
-        Rinput.close();
-        Sinput.close();
-        Binput.close();
-        currencyInout.close();        
-    }
-
-    public static void thebets() {
-        // String pName;
-        // String guessSuit;
-        // String guessRank;
-        // CardCheck check = new CardCheck();
-        // CardCheck.checkCard(pName, guessSuit, guessRank);
+    }        
         
-        // Boolean answer = CardCheck.checkCard(guessRank, guessRank, guessRank);
-        // check.checkCard(pName, guessSuit, guessRank);
-        // Boolean answer = check.dRankNum;
-        
-        int playerCurrency = 1000;
-        int bet = bet();
-        int newPlayerCurrency = initalPlayerBetWon(playerCurrency, bet);
-        newPlayerCurrency = initalPlayerBetLoss(playerCurrency, bet);
-    
-        // startingBetAmount();
-        //initalPlayerBetWon(playerCurrency, bet);
-        // initialPlayerBetLoss(playerCurrency, bet);
-        playerBets(newPlayerCurrency, bet, true);
-        
-        
-
-    } // main
-
         public static int bet() {
             Scanner input = new Scanner(System.in);
             System.out.println("Enter the amount you want to bet: ");
@@ -105,35 +78,15 @@ public class controller{
             return playerBet;
         } // end of bet method
 
-        // this function tells the user the starting bet amount
-        public void startingBetAmount(int playerCurrency) {
-            System.out.println("Your starting bet amount is: " + "$ " + playerCurrency);
 
-        } // end of startingBetAmount method
-
-        // this function takes the playerCurrency and subtracts bet amount
-    public static int initalPlayerBetLoss(int playerCurrency, int bet) {
-        int playerNewCurrency = playerCurrency - bet;
-        System.out.println("Your new betting amount: $ " + playerNewCurrency);
-        return playerNewCurrency;
-    } // end of playerBet method
-
-        // this function takes the playerCurrency and adds the bet amount
-    public static int initalPlayerBetWon(int playerCurrency, int bet) {
-        int playerNewCurrency = playerCurrency + bet;
-        System.out.println("Your new betting amount: $ " + playerNewCurrency);
-        return playerNewCurrency;
-    } // end of initialPlayerbetWon method
-
-
-    // this function checks dRankNum on CardCheck.java to see if true if so add bet else subtract
-    public static int playerBets(int newPlayerCurrency, int bet, boolean danswer){
+    // this function checks dRankNum to see if true if so add bet else subtract
+    public static int playerBets(int currencyAmount, int playerBets, boolean danswer){
             if(danswer == true){
-            newPlayerCurrency += bet;
-            return newPlayerCurrency;
+                currencyAmount += playerBets;
+            return currencyAmount;
             } else {
-            newPlayerCurrency -= bet;
-            return newPlayerCurrency;
+                currencyAmount -= playerBets;
+            return currencyAmount;
             }
     
     } // end of playerBets method
@@ -163,20 +116,17 @@ public class controller{
             System.out.println(rank + " of " + suit);
         }
 
-    } //end of main
+    } //end of getdeck method
 
 
     public static boolean checkCard(String pName, String guessSuit, String guessRank){
-        Boolean dAnswer = false; // Connor here might need to make a variable 
-                        //that sets to true or false so i can call it in the bets function. Problem is the function is void not sure if we can change that or not
-        // the players name
+        Boolean dAnswer = false; 
+                        
         String playerName = pName;
-        // the players guesses
-        // String playerGSuit = guessSuit;
-        // String playerGRank = guessRank; 
 
         System.out.println(guessRank);
         System.out.println(guessSuit);
+
         // array to hold the suits and ranks to get the int values
         String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
         String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
