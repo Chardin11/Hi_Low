@@ -5,7 +5,9 @@ import java.util.Scanner;
 public class controller{
 
     public static void main(String[] args) {
-        getdeck();
+
+        System.out.println("Welcome to High low.");
+        
         player();
 
     } // end of main
@@ -14,59 +16,72 @@ public class controller{
     {
 
 
-        Scanner input = new Scanner(System.in);
-        System.out.println("Enter the number of particapants playing: ");//prompt user amount and player names
+        // Scanner input = new Scanner(System.in);
+        // System.out.println("Enter the number of particapants playing: ");//prompt user amount and player names
         
-        int playerCount = input.nextInt();
+        // int playerCount = input.nextInt();
 
-        String[] playerNames = {"Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9", "Player10", "Player11", "Player12", "Player13", "Player14", "Player15"};
+        // String[] playerNames = {"Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9", "Player10", "Player11", "Player12", "Player13", "Player14", "Player15"};
         Scanner nameinput = new Scanner(System.in);
-        for (int i = 0; i < playerCount; i++) {
-            System.out.println("Enter in the player name:");
-            String playerIds = nameinput.nextLine();
-            playerNames[i] = playerIds;
-        }
+        // for (int i = 0; i < playerCount; i++) {
+            System.out.print("Enter in the player name: ");
+            String playerNames = nameinput.nextLine();
+            // string playerNames = playerIds;
+        // }
+        // input.close();
+        // nameinput.close();
 
-        int[] playerArry = new int[playerCount];//make an array that holds player amount
-        for(int i = 0; i < playerArry.length; i++)//for loop that leys each player make guesses
-        {
-              
-                
+        getGuess(playerNames);
+    }
+
+    public static void getGuess(String playerNames){
+        // int[] playerArry = new int[playerCount];//make an array that holds player amount
+        // for(int i = 0; i < playerArry.length; i++)//for loop that leys each player make guesses
+        // {
+            
+                Scanner input = new Scanner(System.in);
+
                 getdeck();
 
-                Scanner Rinput = new Scanner(System.in);
-                System.out.println(playerNames[i] + " enter in your guess for the rank");
-                String playerRankGuess = Rinput.nextLine();
+                String[] cardArray = getdeck();
 
-                Scanner Sinput = new Scanner(System.in);
-                System.out.println( playerNames[i] + " enter in your guess for the suit");
-                String playerSuitGuess = Sinput.nextLine();
+                String dSuit = cardArray[1];
+                String dRank = cardArray[0];
 
-                Scanner bInput = new Scanner(System.in);
-                System.out.println(playerNames[i] + " enter in your betting amount");
-                int playerBets = bInput.nextInt();
 
-                Scanner currencyInout = new Scanner(System.in);
-                System.out.println(playerNames[i] + " enter in your currency amount");
-                int currencyAmount = currencyInout.nextInt();
+                System.out.println("Displayed card (rank suit) " + dRank + " " + dSuit);
 
-                Boolean dAnswer = checkCard(playerSuitGuess, playerRankGuess, playerSuitGuess);
-                checkCard(playerNames[i], playerSuitGuess, playerRankGuess);
+                // Scanner Rinput = new Scanner(System.in);
+                System.out.print(playerNames + " enter in your guess for the rank: ");
+                String playerRankGuess = input.nextLine();
+
+                // Scanner Sinput = new Scanner(System.in);
+                System.out.print( playerNames + " enter in your guess for the suit: ");
+                String playerSuitGuess = input.nextLine();
+
+                // Scanner bInput = new Scanner(System.in);
+                System.out.print(playerNames + " enter in your betting amount: ");
+                int playerBets = input.nextInt();
+
+                // Scanner currencyInout = new Scanner(System.in);
+                System.out.print(playerNames + " enter in your currency amount: ");
+                int currencyAmount = input.nextInt();
+
+                Boolean dAnswer = checkCard(playerNames, playerRankGuess, playerSuitGuess, cardArray);
+                // checkCard(playerNames, playerSuitGuess, playerRankGuess, cardArray);
 
                 playerBets(currencyAmount, playerBets, true);
                 
                 currencyAmount = playerBets(currencyAmount, playerBets, dAnswer);
-                System.out.println("\n" + playerNames[i] + " your new betting amount: " + currencyAmount);
+                System.out.println("\n" + playerNames + " your new betting amount: " + currencyAmount);
                 System.out.println(" ");
-                // Rinput.close();
-                // Sinput.close();
-                // bInput.close();
-                // currencyInout.close();        
+
+                
 
         }
-        input.close();
-        nameinput.close();
-    }        
+            
+        
+      
         
         public static int bet() {
             Scanner input = new Scanner(System.in);
@@ -91,7 +106,13 @@ public class controller{
     
     } // end of playerBets method
 
-    public static void getdeck(){
+    public static String[] getdeck(){
+        String Dsuit = "";
+        String Drank = "";
+        String Hsuit = "";
+        String Hrank = "";
+
+
         int[] deck = new int[52];
 
         String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
@@ -109,35 +130,49 @@ public class controller{
         }
 
         for (int i = 0; i < 1; i++) {
-            String suit = suits[deck[i] / 13];
-            String rank = ranks[deck[i] % 13];
+            Dsuit = suits[deck[i] / 13];
+            Drank = ranks[deck[i] % 13];
 
-
-            System.out.println(rank + " of " + suit);
+            // displayed card
+            // System.out.println(Drank + " of " + Dsuit);
         }
+        for (int i = 0; i < 1; i++) {
+            Hsuit = suits[deck[i] / 13];
+            Hrank = ranks[deck[i] % 13];
+
+            // Hidden card
+            // System.out.println(Hrank + " of " + Hsuit);
+        }
+
+        String[] cardarray = {Drank, Dsuit, Hrank, Hsuit};
+
+        return cardarray;
 
     } //end of getdeck method
 
 
-    public static boolean checkCard(String pName, String guessSuit, String guessRank){
+    public static boolean checkCard(String pName, String guessSuit, String guessRank, String[] cardArray){
         Boolean dAnswer = false; 
                         
         String playerName = pName;
 
-        System.out.println(guessRank);
-        System.out.println(guessSuit);
+        // System.out.println(guessRank);
+        // System.out.println(guessSuit);
 
         // array to hold the suits and ranks to get the int values
         String[] suits = {"Spades", "Hearts", "Diamonds", "Clubs"};
         String[] ranks = {"Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King"};
 
         // holder values
-        String dSuit = "Spades";
-        String dRank = "2";
+        String dSuit = cardArray[1];
+        String dRank = cardArray[0];
 
-        String hSuit = "Diamonds";
-        String hRank = "5";
-        
+        String hSuit = cardArray[3];
+        String hRank = cardArray[2];
+
+        // System.out.println("Displayed card " + dRank + dSuit);
+        // System.out.println("Displayed card " + hRank + hSuit);
+
         // string arrays to the suit and rank
         String[] displayCard =  {dSuit, dRank};
         String[] hiddenCard = {hSuit, hRank};
@@ -192,7 +227,7 @@ public class controller{
                 dAnswer = true;
             }
             else {
-                System.out.println( playerName + " guessed wrong for the suit.");
+                System.out.println( playerName + " guessed wrong for the suit5.");
                 dAnswer = false;
             }
 
@@ -203,14 +238,14 @@ public class controller{
                 dAnswer = true;
             }
             else {
-                System.out.println( playerName + " guessed wrong for the suit.");
+                System.out.println( playerName + " guessed wrong for the suit4.");
                 dAnswer = false;
             }
 
         }
         else{
             System.out.println("Invalid Input");
-            checkCard(hRank, hRank, hRank);
+            getGuess(playerName);
         }
 
         if (guessRank.equals("higher") || guessRank.equals("Higher") || guessRank.equals("HIGHER") || guessRank.equals("h") || guessRank.equals("H")){
@@ -219,7 +254,7 @@ public class controller{
                 dAnswer = true;
             }
             else {
-                System.out.println( playerName + " guessed wrong for the rank.");
+                System.out.println( playerName + " guessed wrong for the rank1.");
                 dAnswer = false;
             }
         }
@@ -229,13 +264,13 @@ public class controller{
                 dAnswer = true;
             }
             else {
-                System.out.println( playerName + " guessed wrong for the suit.");
+                System.out.println( playerName + " guessed wrong for the rank2.");
                 dAnswer = false;
             }
         }
         else{
             System.out.println("Invalid Input");
-            checkCard(hRank, hRank, hRank);
+            getGuess(playerName);
         }
         return dAnswer;
     }
