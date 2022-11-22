@@ -1,4 +1,3 @@
-package Hi_Low;
 
 import java.util.Scanner;
 
@@ -36,21 +35,20 @@ public class controller{
 
                 System.out.println("Displayed card (rank suit) " + dRank + " " + dSuit);
 
-                // Scanner Rinput = new Scanner(System.in);
+                
                 System.out.print(playerNames + " enter in your guess for the rank: ");
                 String playerRankGuess = input.nextLine();
 
-                // Scanner Sinput = new Scanner(System.in);
+                
                 System.out.print( playerNames + " enter in your guess for the suit: ");
                 String playerSuitGuess = input.nextLine();
+                
+                System.out.print(playerNames + " enter in your currency amount: ");
+                int currencyAmount = input.nextInt();
 
-                // Scanner bInput = new Scanner(System.in);
                 System.out.print(playerNames + " enter in your betting amount: ");
                 int playerBets = input.nextInt();
 
-                // Scanner currencyInout = new Scanner(System.in);
-                System.out.print(playerNames + " enter in your currency amount: ");
-                int currencyAmount = input.nextInt();
 
                 Boolean dAnswer = checkCard(playerNames, playerRankGuess, playerSuitGuess, cardArray);
 
