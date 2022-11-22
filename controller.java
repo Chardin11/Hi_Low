@@ -15,29 +15,14 @@ public class controller{
     public static void player() 
     {
 
-
-        // Scanner input = new Scanner(System.in);
-        // System.out.println("Enter the number of particapants playing: ");//prompt user amount and player names
-        
-        // int playerCount = input.nextInt();
-
-        // String[] playerNames = {"Player1", "Player2", "Player3", "Player4", "Player5", "Player6", "Player7", "Player8", "Player9", "Player10", "Player11", "Player12", "Player13", "Player14", "Player15"};
         Scanner nameinput = new Scanner(System.in);
-        // for (int i = 0; i < playerCount; i++) {
             System.out.print("Enter in the player name: ");
             String playerNames = nameinput.nextLine();
-            // string playerNames = playerIds;
-        // }
-        // input.close();
-        // nameinput.close();
 
         getGuess(playerNames);
     }
 
     public static void getGuess(String playerNames){
-        // int[] playerArry = new int[playerCount];//make an array that holds player amount
-        // for(int i = 0; i < playerArry.length; i++)//for loop that leys each player make guesses
-        // {
             
                 Scanner input = new Scanner(System.in);
 
@@ -68,9 +53,8 @@ public class controller{
                 int currencyAmount = input.nextInt();
 
                 Boolean dAnswer = checkCard(playerNames, playerRankGuess, playerSuitGuess, cardArray);
-                // checkCard(playerNames, playerSuitGuess, playerRankGuess, cardArray);
 
-                playerBets(currencyAmount, playerBets, true);
+                playerBets(currencyAmount, playerBets, dAnswer);
                 
                 currencyAmount = playerBets(currencyAmount, playerBets, dAnswer);
                 System.out.println("\n" + playerNames + " your new betting amount: " + currencyAmount);
@@ -94,9 +78,9 @@ public class controller{
         } // end of bet method
 
 
-    // this function checks dRankNum to see if true if so add bet else subtract
-    public static int playerBets(int currencyAmount, int playerBets, boolean danswer){
-            if(danswer == true){
+    // this function checks dAnswer to see if true if so add bet else subtract
+    public static int playerBets(int currencyAmount, int playerBets, boolean dAnswer){
+            if(dAnswer == true){
                 currencyAmount += playerBets;
             return currencyAmount;
             } else {
